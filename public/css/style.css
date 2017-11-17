@@ -1,0 +1,68 @@
+/****** Main Styling ******/
+
+body {
+	font-family: 'Roboto', sans-serif;
+	font-size: 16px;
+	color: #222;
+	text-align: center;
+}
+
+.container {
+	padding: 0;
+  width: 100%;
+	margin-top: 40px;
+  text-align: left;
+}
+
+.well{
+  margin: auto;
+  width: 70%;
+  border-style: solid;
+  padding: 10px;
+}
+
+code {
+    padding: 2px 4px;
+    font-size: 90%;
+    color: #c7254e;
+    background-color: #f9f2f4;
+    border-radius: 4px;
+}
+
+footer {
+	margin-top: 20px;
+  text-align: center;
+}
+
+ol {
+	list-style-position: inside;
+}
+ul {
+	list-style-type: none;
+}
+
+a {
+	color: #2574A9;
+  text-decoration: none;
+   
+}
+
+a:hover{
+  color: #000;
+ 
+}
+
+
+/****** Logo Div Styling ******/
+
+img {
+	margin: 20px auto 0 auto;
+	display: block;
+}
+
+/****** FontAwesome Styling ******/
+
+.fa{
+ font-size: 22px !important;
+
+}
