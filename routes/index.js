@@ -6,9 +6,9 @@ const URL = require('../models/UrlModel.js')
 
 router.use('/new/*', (req, res, next) => {
   const url = req.params[0];
-  let response = {
+  const response = {
     error: "Your url is invalid or in the wrong format. Verify that a valid protocol (http or https) is part of the url."
-    };
+  };
    if (validUrl.isUri(url)) {
      req.uri = url;
       next();
@@ -18,17 +18,30 @@ router.use('/new/*', (req, res, next) => {
 });
 
 //Creates a 5 digit random number between 10000 and 99999
-var random5DigitNum = () => {
+const random5DigitNum = () => {
   return Math.floor(Math.random() * 90000) + 10000;
 } 
 
 router.route('/new/*')
+//currently not working with PUT or POST
 .get((req, res) => {
-  const url = req.uri;
-  console.log("Random 5 digit number is: ", random5DigitNum());
-  //create a random 5 digit number
-  console.log(url);
- res.json(url);
+  const shortenedUrl = random5DigitNum();
+  URL.findOneAndUpdate(
+    {original: req.uri}, // filter
+    {$push: { shortened: shortenedUrl} }, // update
+    {upsert: true, new: true, runValidators: true}, // options
+    function (err, doc) { // callback
+        if (err) {
+            res.status(500).send(err);
+        }else {
+            let response = {
+              original_url: doc.original,
+              shortened_url: `${req.headers.host}/${shortenedUrl}`
+            };
+            res.json(response);
+        }
+    }
+);
 });
 
 router.use('/:shortenedURL/', (req, res, next) => {
