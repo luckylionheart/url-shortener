@@ -3,12 +3,15 @@ const path = require('path');
 const validUrl = require('valid-url');
 const URL = require('../models/UrlModel.js')
 
+//Creates a 5 digit random number between 10000 and 99999
+const random5DigitNum = () => {
+  return Math.floor(Math.random() * 90000) + 10000;
+} 
 
+//Checks if the url is valid before trying to access routes that access the database
 router.use('/new/*', (req, res, next) => {
   const url = req.params[0];
-  const response = {
-    error: "Your url is invalid or in the wrong format. Verify that a valid protocol (http or https) is part of the url."
-  };
+  const response = { error: "Your url is invalid or in the wrong format. Verify that a valid protocol (http or https) is part of the url." };
    if (validUrl.isUri(url)) {
      req.uri = url;
       next();
@@ -16,11 +19,6 @@ router.use('/new/*', (req, res, next) => {
       res.json(response);
     }
 });
-
-//Creates a 5 digit random number between 10000 and 99999
-const random5DigitNum = () => {
-  return Math.floor(Math.random() * 90000) + 10000;
-} 
 
 router.route('/new/*')
 //currently not working with PUT or POST
@@ -44,27 +42,32 @@ router.route('/new/*')
 );
 });
 
+//Checks that the passed shortened url is a digit value before querying the database.
 router.use('/:shortenedURL/', (req, res, next) => {
-  next();
-    //if we can find the shortenedURl in the database, then we can use the next route to redirect to the original url,
-    //else we send back a json file with an error
-   /* URL.findById(req.params.markerId, (err, url) => {
-      if (err) {
-        res.status(500).send(err);
-      } else if (url) {
-        req.uri = url;
-        next();
-      } else {
-        res.statusCode(404).send('This shortened url is not in the database');
-      }
-    });
-    */
-  });
+  const isNumber =  /^\d+$/.test(req.params.shortenedURL);
+  const response = { error: "The shortened url is in the wrong format. Verify that passed shortened URL is a digit value." };
+  if (isNumber){
+      next();
+    }else {
+      res.json(response);
+    }
+});
 
 router.route('/:shortenedURL/')
 .get((req, res) => {
     const shortenedURL = req.params.shortenedURL;
-    res.json(shortenedURL)
+    var queryDoc = { shortened: shortenedURL};
+    var select = 'original';
+    URL.findOne(queryDoc, select, (err, url) => {
+      if (err) {
+        res.status(500).send(err);
+      } else if (url) {
+        res.redirect(301, url.original);
+      } else {
+        const response = { error: "This shortened url is not in the database" };
+        res.json(response);
+      }
+    });
 });
 
 module.exports = router;
