@@ -14,9 +14,35 @@
       <div class="container">
         <div class="well">
          <h1>URL Shortener Microservice</h1>
-          <hr>
-    
-          </div> <!-- well -->
+         <hr>
+         <p>
+          This service accepts a URL as a parameter and will check whether it follows the valid  http://www.example.com format. 
+          If the URL is valid, it will return both the original URL and shortened URL in the JSON response. If it is not, 
+          the JSON response will contain an error instead. When you visit that shortened URL, it will redirect you to the original link.
+         </p>
+       
+         <h2>Example Creation Usage</h2>
+         <p>Pass the URL to path http://localhost:3000/new/ as below:</p>
+        
+         <h3>Valid URL example</h3>
+         <code>http://localhost:3000/new/https://www.github.com</code>
+         <br>
+
+         <h2>Example Creation Output</h2>
+         <h3>Valid URL example JSON response</h3>
+         <code>{
+           <br>  original_url: "https://www.github.com", 
+           <br>
+                 shortened_url: "localhost:3000/98095"
+           <br>
+           }
+         </code>
+
+         <h2>Usage:</h2>
+         <p>Visiting the shortened URL: http://localhost:3000/98095
+          will redirect to: https://www.github.com</p>
+         
+        </div> <!-- well -->
         <footer>
           <p>Github Repo <a href="https://github.com/maribelduran/url-shortener-microservice" target="_blank">
           <span class="fa fa-github"></span>
