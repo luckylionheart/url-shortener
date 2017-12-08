@@ -1,7 +1,7 @@
 {
   "name": "url-shortener-microservice",
   "version": "0.0.1",
-  "description": "URL Shorterner Microservice app using Node.js, Express.js, and MongoDB.",
+  "description": "URL Shortener Microservice app using Node.js, Express.js, and MongoDB.",
   "main": "app.js",
   "scripts": {
     "start": "node app.js"
