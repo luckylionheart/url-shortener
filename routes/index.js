@@ -32,9 +32,10 @@ router.route('/new/*')
         if (err) {
             res.status(500).send(err);
         }else {
+          let reqBaseUrl = req.protocol + '://' + req.get('host');
             let response = {
               original_url: doc.original,
-              shortened_url: `${req.headers.host}/${shortenedUrl}`
+              shortened_url: `${reqBaseUrl}/${shortenedUrl}`
             };
             res.json(response);
         }
