@@ -21,6 +21,10 @@ body {
   padding: 10px;
 }
 
+h1, h2{
+ border-bottom: 1px solid #eaecef
+}
+
 code {
     padding: 2px 4px;
     font-size: 90%;
