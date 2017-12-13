@@ -2,7 +2,7 @@
 <html>
 
    <head>
-     <title>URL Shortener Microservice</title>
+     <title>URL Shortener Microservice </title>
      <meta charset="utf-8">      
      <meta name="viewport" content="width=device-width, initial-scale=1">
      <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
@@ -13,8 +13,7 @@
    <body>
       <div class="container">
         <div class="well">
-         <h1>URL Shortener Microservice</h1>
-         <hr>
+         <h1 >URL Shortener Microservice &#128153;</h1>
          <p>
           This service accepts a URL as a parameter and will check whether it follows the valid  http://www.example.com format. 
           If the URL is valid, it will return both the original URL and shortened URL in the JSON response. If it is not, 
@@ -22,10 +21,10 @@
          </p>
        
          <h2>Example Creation Usage</h2>
-         <p>Pass the URL to path http://localhost:3000/new/ as below:</p>
+         <p>Pass the URL to path https://url-shortener-microsrvc.herokuapp.com/new/[URL]  as below:</p>
         
-         <h3>Valid URL example</h3>
-         <code>http://localhost:3000/new/https://www.github.com</code>
+         <h4>Valid URL example</h4>
+         <code>https://url-shortener-microsrvc.herokuapp.com/new/https://www.github.com</code>
          <br>
 
          <h2>Example Creation Output</h2>
@@ -33,14 +32,16 @@
          <code>{
            <br>  original_url: "https://www.github.com", 
            <br>
-                 shortened_url: "localhost:3000/98095"
+                 shortened_url: "https://url-shortener-microsrvc.herokuapp.com/29183"
            <br>
            }
          </code>
 
          <h2>Usage:</h2>
-         <p>Visiting the shortened URL: http://localhost:3000/98095
-          will redirect to: https://www.github.com</p>
+         <p>Visiting the shortened URL: <a href="https://url-shortener-microsrvc.herokuapp.com/29183" target="_blank">https://url-shortener-microsrvc.herokuapp.com/29183</a>
+          will redirect to:https://www.github.com</p>
+
+          <p>Enjoy! &#128153;</p>
          
         </div> <!-- well -->
         <footer>
