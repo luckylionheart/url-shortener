@@ -8,13 +8,13 @@ A Full Stack Javascript application built using MongoDB, NodeJS and Express. An 
 
 ## Example Creation Usage
 
-Pass the URL to path https://url-shortener-microsrvc.herokuapp.com/new/[URL] as below:
+Pass the URL to path https://<i></i>url-shortener-microsrvc.herokuapp.com/new/[URL] as below:
 
 ### Valid URL example
 ```
 https://url-shortener-microsrvc.herokuapp.com/new/https://www.github.com
 ```
-### Invalid URL example
+### Invalid URL example (missing protocol)
 ```
 https://url-shortener-microsrvc.herokuapp.com/new/www.github.com
 ```
@@ -25,7 +25,7 @@ https://url-shortener-microsrvc.herokuapp.com/new/www.github.com
 ```javascript
 {
   original_url: "https://www.github.com",
-  shortened_url: "url-shortener-microsrvc.herokuapp.com/29183"
+  shortened_url: "https://url-shortener-microsrvc.herokuapp.com/29183"
 }
 ```
 
