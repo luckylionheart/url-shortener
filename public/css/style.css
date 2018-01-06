@@ -19,6 +19,7 @@ body {
   width: 70%;
   border-style: solid;
   padding: 10px;
+  word-wrap: break-word;
 }
 
 h1, h2{
